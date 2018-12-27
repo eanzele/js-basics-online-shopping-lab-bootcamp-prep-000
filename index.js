@@ -19,6 +19,25 @@ function addToCart(item) {
 
 function viewCart() {
   // write your code here
+  var items=[]
+  if(!cart.length) {
+    return "Your shopping cart is empty."
+  }
+  if(cart.length>=3) {
+    for(let i=0;i<cart.length-1;i++) {
+      items.push(cart[i]['itemName']+" at $"+cart[i]['itemPrice']);
+    }
+    return `In your cart, you have ${items.join(', ')}, and ${cart[cart.length-1]['itemName']} at $${cart[cart.length-1]['itemPrice']}.`
+  }
+  else if(cart.length==2) {
+    for(let i=0;i<cart.length;i++) {
+      items.push(cart[i]['itemName']+" at $"+cart[i]['itemPrice']);
+    }
+    return `In your cart, you have ${items[0]}, and ${items[1]}.`
+  }
+  else {
+    return `In your cart, you have ${cart[0]['itemName']} at $${cart[0]['itemPrice']}.`
+  }
 }
 
 function total() {
